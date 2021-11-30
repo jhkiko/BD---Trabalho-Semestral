@@ -1,0 +1,39 @@
+CREATE DATABASE Exercicios04
+GO
+USE Exercicios04
+
+CREATE TABLE CLIENTE (
+cpf			VARCHAR(12)			NOT NULL,
+nome		VARCHAR(100)		NOT NULL,
+telefone	VARCHAR(10)			NOT NULL,
+PRIMARY KEY (cpf));
+
+CREATE TABLE FORNECEDOR (
+id			INT					NOT NULL,
+nome		VARCHAR(50)			NOT NULL,
+logradouro	VARCHAR(150)		NOT NULL,
+n			INT					NOT NULL,
+complemento	VARCHAR(50)			NOT NULL,
+cidade		VARCHAR(50)			NOT NULL,
+PRIMARY KEY (id));
+
+CREATE TABLE PRODUTO (
+codigo		INT					NOT NULL,
+descricao	VARCHAR(300)		NOT NULL,
+fornecedor	INT					NOT NULL,
+preco		DECIMAL(7,2)		NOT NULL,
+PRIMARY KEY (codigo),
+FOREIGN KEY (fornecedor) REFERENCES FORNECEDOR(id));
+
+CREATE TABLE VENDA (
+codigo		INT					NOT NULL,
+produto		INT					NOT NULL,
+cliente		VARCHAR(12)			NOT NULL,
+quantidade	INT					NOT NULL,
+valor_total	DECIMAL(7,2)		NOT NULL,
+data_		DATETIME			NOT NULL,
+PRIMARY KEY (codigo, produto, cliente),
+FOREIGN KEY (produto) REFERENCES PRODUTO(codigo),
+FOREIGN KEY (cliente) REFERENCES CLIENTE(cpf));
+
+

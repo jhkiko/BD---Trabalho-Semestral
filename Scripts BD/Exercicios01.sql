@@ -1,0 +1,21 @@
+USE Faculdade
+
+SELECT * FROM ALUNO
+SELECT * FROM CURSOS
+SELECT * FROM DISCIPLINAS
+
+SELECT ALUNO.nome, ALUNO.sobrenome
+FROM Faculdade.dbo.ALUNO
+
+SELECT ALUNO.nome, ALUNO.rua, ALUNO.numero, ALUNO.bairro, ALUNO.cep, ALUNO.telefone
+FROM.Faculdade.dbo.ALUNO
+WHERE telefone	IS NULL
+
+SELECT CURSOS.nome, CURSOS.turno
+FROM CURSOS
+WHERE (carga_horaria = 2800)
+
+SELECT DISCIPLINAS.semestre
+FROM DISCIPLINAS
+WHERE nome LIKE 'Banco%'
+AND	turno LIKE 'n%'
